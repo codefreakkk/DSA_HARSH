@@ -158,7 +158,7 @@ class RedBlackTree {
         for(int i=0;i<9;i++)
         {
             t.insert(arr[i]);
-        };
+        }
         t.inorder(t.root);
     }
 }
