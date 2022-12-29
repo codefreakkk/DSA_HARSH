@@ -1,7 +1,5 @@
 package trees.NaryTree;
 
-import java.util.Scanner;
-
 public class MaxDepthOfNaryTree {
     int max = 0;
     public void solve(Node root, int depth) {
