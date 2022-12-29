@@ -29,6 +29,7 @@ public class NaryTree {
         return root;
     }
 
+    // preorder traversal of nary tree
     public static List<Integer> solve(Node root, List<Integer> list) {
         if (root == null)
             return list;
