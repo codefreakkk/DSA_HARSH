@@ -49,11 +49,11 @@ class MaxHeap {
             int leftIndex = 2 * i;
             int rightIndex = 2 * i + 1;
 
-            if (leftIndex < size && arr[i] < arr[leftIndex]) {
+            if (leftIndex <= size && arr[i] < arr[leftIndex]) {
                 swap(i, leftIndex);
                 i = leftIndex;
             }
-            else if (rightIndex < size && arr[i] < arr[rightIndex]) {
+            else if (rightIndex <= size && arr[i] < arr[rightIndex]) {
                 swap(i, rightIndex);
                 i = rightIndex;
             }
@@ -61,7 +61,6 @@ class MaxHeap {
                 return;
         }
     }
-
 }
 
 public class Heaps {
@@ -73,6 +72,7 @@ public class Heaps {
         maxHeap.insert(52);
         maxHeap.insert(54);
         maxHeap.print();
+        maxHeap.delete();
         maxHeap.delete();
         System.out.println();
         maxHeap.print();
