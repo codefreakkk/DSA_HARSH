@@ -17,10 +17,8 @@ public class CheckCompleteBinaryTree {
                 queue.add(element.right);
             }
         }
-
         return true;
     }
-
 
     public static void main(String[] args) {
 
