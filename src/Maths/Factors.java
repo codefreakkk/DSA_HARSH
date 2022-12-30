@@ -30,7 +30,8 @@ public class Factors {
     }
 
     public static void main(String[] args) {
-        int n = 1;
-        System.out.println(countFact(n));
+        int n = 4;
+//        System.out.println(fact(n));
+        fact(n);
     }
 }
