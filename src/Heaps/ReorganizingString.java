@@ -32,7 +32,6 @@ public class ReorganizingString {
             pq.offer(new Pairs(mp.getKey(), mp.getValue()));
 
 
-
         String ans = "";
         while (pq.size() > 1) {
             Pairs top1 = pq.poll();
