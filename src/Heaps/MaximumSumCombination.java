@@ -10,7 +10,6 @@ public class MaximumSumCombination {
             this.data = data;
             this.indexA = indexA;
             this.indexB = indexB;
-
         }
     }
 
