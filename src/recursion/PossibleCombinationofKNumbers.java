@@ -16,7 +16,7 @@ public class PossibleCombinationofKNumbers {
         solve(n, k, index + 1, output, answer);
         output.remove(output.size() - 1);
         solve(n, k, index + 1, output, answer);
-        return;
+
     }
 
     public static List<List<Integer>> combine(int n, int k) {

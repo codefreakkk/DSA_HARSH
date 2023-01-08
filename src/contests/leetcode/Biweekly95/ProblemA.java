@@ -1,12 +1,12 @@
 package contests.leetcode.Biweekly95;
 
-// not completed
 public class ProblemA {
     public static String categorizeBox(int length, int width, int height, int mass) {
-        long volume = length * width * height;
+        long volume = (long)length*width*height;
         boolean isBulky = false, isHeavy = false;
 
-        if (length >= 10e4 || width >= 10e4 || height >= 10e4 || mass >= 10e4 || volume >= 10e5)
+
+        if (length >= 1e4 || width >= 1e4 || height >= 1e4 || mass >= 1e4 || volume >= 1e9)
             isBulky = true;
 
         if (mass >= 100)
@@ -14,12 +14,12 @@ public class ProblemA {
 
         if (isBulky && isHeavy)
             return "Both";
-        else if (isBulky)
+        if (isBulky)
             return "Bulky";
-        else if (isHeavy)
+        if (isHeavy)
             return "Heavy";
-        else
-            return "Neither";
+
+        return "Neither";
     }
     public static void main(String[] args) {
         int length = 3223, width = 1271, height = 2418, mass = 749;
