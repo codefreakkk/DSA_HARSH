@@ -2,7 +2,7 @@ package Graph;
 
 import java.util.*;
 
-public class DistanceOfNearestCellHaving1 {
+public class _01Matrix {
     class Tupple {
         int row, col, steps;
         public Tupple(int row, int col, int steps) {
@@ -11,22 +11,23 @@ public class DistanceOfNearestCellHaving1 {
             this.steps = steps;
         }
     }
-    public boolean isValid(int row, int col, int[][] visited, int[][] grid) {
+
+    public boolean isValid(int row, int col, int[][] grid, int[][] visited) {
         int n = grid.length;
         int m = grid[0].length;
-        return (row >= 0 && row < n) && (col >= 0 && col < m) && (visited[row][col] == 0 && grid[row][col] == 0);
+        return (row >= 0 && row < n) && (col >= 0 && col < m) && (visited[row][col] == 0 && grid[row][col] == 1);
     }
 
-    public int[][] nearest(int[][] grid) {
+    public int[][] updateMatrix(int[][] grid) {
         int n = grid.length;
         int m = grid[0].length;
+        Queue<Tupple> queue = new LinkedList<>();
         int[][] visited = new int[n][m];
         int[][] ans = new int[n][m];
-        Queue<Tupple> queue = new LinkedList<>();
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                if (grid[i][j] == 1) {
+                if (grid[i][j] == 0) {
                     queue.offer(new Tupple(i, j, 0));
                     visited[i][j] = 1;
                 }
@@ -41,25 +42,29 @@ public class DistanceOfNearestCellHaving1 {
             int row = tupple.row;
             int col = tupple.col;
             int steps = tupple.steps;
-            ans[row][col] = steps;
 
             for (int i = 0; i < 4; i++) {
                 int newRow = row + delRow[i];
                 int newCol = col + delCol[i];
 
-                if (isValid(newRow, newCol, visited, grid)) {
+                if (isValid(newRow, newCol, grid, visited)) {
+                    int finalStep = steps + 1;
+                    ans[newRow][newCol] = finalStep;
                     visited[newRow][newCol] = 1;
-                    queue.offer(new Tupple(newRow, newCol, steps + 1));
+                    queue.offer(new Tupple(newRow, newCol, finalStep));
                 }
             }
         }
         return ans;
     }
-
     public static void main(String[] args) {
-        DistanceOfNearestCellHaving1 o = new DistanceOfNearestCellHaving1();
-        int[][] grid = {{1,0,1},{1,1,0},{1,0,0}};
-        int[][] ans = o.nearest(grid);
+        _01Matrix o = new _01Matrix();
+        int[][] grid = {
+                {0, 0, 0},
+                {0, 1, 0},
+                {1, 1, 1}
+        };
+        int[][] ans = o.updateMatrix(grid);
         for (int[] i : ans)
             System.out.println(Arrays.toString(i));
     }
