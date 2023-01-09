@@ -7,7 +7,7 @@ public class DetectACycleInUndirectedGraphDFS {
         visited[node] = 1;
         for (int adjacentNode : adj.get(node)) {
             if (visited[adjacentNode] == 0) {
-                if (dfs(adjacentNode, node, adj, visited) == true)
+                if (dfs(adjacentNode, node, adj, visited))
                     return true;
             }
             else if (adjacentNode != parent)
@@ -20,7 +20,7 @@ public class DetectACycleInUndirectedGraphDFS {
         int[] visited = new int[v];
         for (int i = 0; i < v; i++) {
             if (visited[i] == 0) {
-                if (dfs(i, -1, adj, visited) == true)
+                if (dfs(i, -1, adj, visited))
                     return true;
             }
         }
