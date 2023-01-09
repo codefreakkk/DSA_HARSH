@@ -2,7 +2,7 @@ package Graph;
 
 import java.util.*;
 
-public class BipartiteGraph {
+public class BipartiteGraphBFS {
     public boolean detectBipartite(int node, int[] color, ArrayList<ArrayList<Integer>> adj) {
         Queue<Integer> queue = new LinkedList<>();
         queue.offer(node);
