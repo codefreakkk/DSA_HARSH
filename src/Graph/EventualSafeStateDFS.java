@@ -2,7 +2,7 @@ package Graph;
 
 import java.util.*;
 
-public class EventualSafeState {
+public class EventualSafeStateDFS {
     public boolean dfs(int node, List<List<Integer>> adj, int[] visited, int[] pathVisited, int[] check) {
         visited[node] = 1;
         pathVisited[node] = 1;

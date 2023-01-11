@@ -2,6 +2,7 @@ package Graph;
 
 import java.util.ArrayList;
 
+// can also be done using topo sort (kahn's algo)
 public class CourseSchedule {
     private void convertIntoAdjacencyList(int n, int[][] edges, ArrayList<ArrayList<Integer>> adj) {
         for (int i = 0; i < n; i++)
