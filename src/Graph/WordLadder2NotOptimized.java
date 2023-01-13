@@ -2,7 +2,7 @@ package Graph;
 
 import java.util.*;
 
-public class WordLadder2 {
+public class WordLadder2NotOptimized {
     public ArrayList<ArrayList<String>> findSequences(String startWord, String targetWord, String[] wordList) {
         Set<String> set = new HashSet<>();
         for (String str : wordList)
@@ -52,7 +52,7 @@ public class WordLadder2 {
     }
 
     public static void main(String[] args) {
-        WordLadder2 w = new WordLadder2();
+        WordLadder2NotOptimized w = new WordLadder2NotOptimized();
         String startWord = "der", targetWord = "dfs";
         String[] wordList = {"des","der","dfr","dgt","dfs"};
         ArrayList<ArrayList<String>> ans = w.findSequences(startWord, targetWord, wordList);
