@@ -3,12 +3,15 @@ package Graph;
 import java.util.*;
 
 public class DisjointSet {
-    List<Integer> rank, parent;
+    List<Integer> rank, parent, size;
     public DisjointSet(int n) {
         this.rank = new ArrayList<>();
         this.parent = new ArrayList<>();
+        this.size = new ArrayList<>();
+
         for (int i = 0; i <= n; i++) {
             parent.add(i);
+            size.add(1);
             rank.add(0);
         }
     }
@@ -25,6 +28,9 @@ public class DisjointSet {
     public void unionByRank(int u, int v) {
         int parent_u = findParent(u);
         int parent_v = findParent(v);
+        if (parent_u == parent_v)
+            return;
+
         if (rank.get(parent_u) < rank.get(parent_v)) {
             parent.set(parent_u, parent_v);
         }
@@ -38,17 +44,33 @@ public class DisjointSet {
         }
     }
 
+    public void unionBySize(int u, int v) {
+        int parent_u = findParent(u);
+        int parent_v = findParent(v);
+        if (parent_u == parent_v)
+                return;
+
+        if (size.get(parent_u) < size.get(parent_v)) {
+            parent.set(parent_u, parent_v);
+            size.set(parent_v, size.get(parent_u) + size.get(parent_v));
+        }
+        else {
+            parent.set(parent_v, parent_u);
+            size.set(parent_u, size.get(parent_u) + size.get(parent_v));
+        }
+    }
+
     public static void main(String[] args) {
         DisjointSet ds = new DisjointSet(7);
-        ds.unionByRank(1, 2);
-        ds.unionByRank(2, 3);
-        ds.unionByRank(4, 5);
-        ds.unionByRank(6, 7);
-        ds.unionByRank(5, 6);
+        ds.unionBySize(1, 2);
+        ds.unionBySize(2, 3);
+        ds.unionBySize(4, 5);
+        ds.unionBySize(6, 7);
+        ds.unionBySize(5, 6);
         if (ds.findParent(3) == ds.findParent(7))
             System.out.println("Same");
         else System.out.println("Not same");
-        ds.unionByRank(3, 7);
+        ds.unionBySize(3, 7);
         if (ds.findParent(3) == ds.findParent(7))
             System.out.println("Same");
         else System.out.println("Not same");
