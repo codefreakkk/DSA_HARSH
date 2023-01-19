@@ -51,8 +51,6 @@ public class ArticulationPoint {
 
         return ans;
     }
-
     public static void main(String[] args) {
-
     }
 }
