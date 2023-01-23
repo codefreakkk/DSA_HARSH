@@ -4,55 +4,56 @@ import java.util.*;
 
 public class NumberOfWaysToArriveAtDestination {
     class Pair {
-        int node, steps;
-        public Pair(int steps, int node) {
+        int node, weight;
+        public Pair(int node, int weight) {
             this.node = node;
-            this.steps = steps;
+            this.weight = weight;
         }
     }
 
-    public int countPaths(int n, List<List<Integer>> grid) {
-        ArrayList<ArrayList<Pair>> adj = new ArrayList<>();
+    public int countPaths(int n, int[][] grid) {
+        List<List<Pair>> adj = new ArrayList<>();
         for (int i = 0; i < n; i++)
             adj.add(new ArrayList<>());
 
-        for (List<Integer> list : grid) {
-            int u = list.get(0);
-            int v = list.get(1);
-            int time = list.get(2);
-            adj.get(u).add(new Pair(time, v));
-            adj.get(v).add(new Pair(time, u));
+        for (int[] edge : grid) {
+            int u = edge[0];
+            int v = edge[1];
+            int w = edge[2];
+
+            adj.get(u).add(new Pair(v, w));
+            adj.get(v).add(new Pair(u, w));
         }
 
-        int mod = (int) 10e9 + 7;
         int[] ways = new int[n];
         int[] distance = new int[n];
+
         for (int i = 0; i < n; i++)
-            distance[i] = (int) 1e9;
+            distance[i] = Integer.MAX_VALUE;
 
         distance[0] = 0;
         ways[0] = 1;
 
-        PriorityQueue<Pair> queue = new PriorityQueue<>((a, b) -> a.steps - b.steps);
-        queue.offer(new Pair(0, 0));
+        PriorityQueue<Pair> pq = new PriorityQueue<>((a, b) -> a.weight - b.weight);
+        pq.offer(new Pair(0, 0));
 
-        while (!queue.isEmpty()) {
-            Pair pair = queue.poll();
+        int mod = 1000000000+7;
+        while (!pq.isEmpty()) {
+            Pair pair = pq.poll();
             int node = pair.node;
-            int steps = pair.steps;
+            int weight = pair.weight;
 
             for (Pair current : adj.get(node)) {
                 int adjNode = current.node;
-                int adjNodeSteps = current.steps;
-                int totalSteps = steps + adjNodeSteps;
+                int adjWeight = current.weight;
 
-                if (totalSteps < distance[adjNode]) {
-                    distance[adjNode] = totalSteps;
+                if (adjWeight + weight < distance[adjNode]) {
+                    distance[adjNode] = adjWeight + weight;
                     ways[adjNode] = ways[node];
-                    queue.offer(new Pair(distance[adjNode], adjNode));
+                    pq.offer(new Pair(adjNode, distance[adjNode]));
                 }
-                else if (totalSteps == distance[adjNode]) {
-                    ways[adjNode] = (ways[node] + ways[adjNode]) % mod;
+                else if (adjWeight + weight == distance[adjNode]) {
+                    ways[adjNode] = (ways[adjNode] + ways[node]) % mod;
                 }
             }
         }
