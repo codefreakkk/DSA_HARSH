@@ -1,7 +1,6 @@
 package Graph;
 
 import java.util.*;
-
 public class SnakesAndLadders {
     class Pair {
         int row, col;
