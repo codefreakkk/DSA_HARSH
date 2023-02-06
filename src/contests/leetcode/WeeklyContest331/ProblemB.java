@@ -1,37 +1,34 @@
 package contests.leetcode.WeeklyContest331;
 import java.util.*;
+
 public class ProblemB {
-    public static int[] vowelStrings(String[] words, int[][] queries) {
-        Set<Character> set = new HashSet<>();
-        set.add('a');
-        set.add('e');
-        set.add('i');
-        set.add('o');
-        set.add('u');
-        List<Integer> list = new ArrayList<>();
+    public boolean isVowel(char val) {
+        return val == 'a' || val == 'e' || val == 'o' || val == 'u' || val == 'i';
+    }
 
-        for (int[] num : queries) {
-            long count = 0;
-            for (int i = num[0]; i <= num[1]; i++) {
-                char first = words[i].charAt(0);
-                char last = words[i].charAt(words[i].length() - 1);
-                if (set.contains(first) && set.contains(last)) {
-                    count++;
-                }
+    public int[] vowelStrings(String[] words, int[][] queries) {
+        List<Integer> prefix = new ArrayList<>();
+        prefix.add(0);
+
+        for (String word : words) {
+            if (isVowel(word.charAt(0)) && isVowel(word.charAt(word.length() - 1))) {
+                prefix.add(prefix.get(prefix.size() - 1) + 1);
             }
-            list.add((int)count);
+            else prefix.add(prefix.get(prefix.size() - 1));
         }
-        int[] ans = new int[list.size()];
-        for (int i = 0; i < list.size(); i++)
-            ans[i] = list.get(i);
 
+        int[] ans = new int[queries.length];
+        for (int i = 0; i < queries.length; i++) {
+            int value = prefix.get((queries[i][1] + 1)) - prefix.get(queries[i][0]);
+            ans[i] = value;
+        }
         return ans;
     }
 
     public static void main(String[] args) {
-        String[] s = {"a", "e", "e", "e","e"};
+        String[] s = {"aba","bcb","ece","aa","e"};
         int[][] queries = {
-                {0,0},{1, 4},{1,1}
+                {0, 2},{1, 4},{1, 1}
         };
         System.out.println(Arrays.toString(vowelStrings(s, queries)));
     }
