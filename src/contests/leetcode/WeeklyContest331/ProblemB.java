@@ -30,6 +30,6 @@ public class ProblemB {
         int[][] queries = {
                 {0, 2},{1, 4},{1, 1}
         };
-        System.out.println(Arrays.toString(vowelStrings(s, queries)));
+//        System.out.println(Arrays.toString(vowelStrings(s, queries)));
     }
 }
