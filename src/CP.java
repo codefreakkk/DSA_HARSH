@@ -65,39 +65,14 @@ public class CP {
             FastWriter out = new FastWriter();
 
             // code here
-
-            //            int t=in.nextInt();
-//            while(t-- > 0) {}
-
-            String s = in.nextLine();
-
-            Stack<Character> stack = new Stack<>();
-            int size = s.length();
-            int cnt = 0, occur = 1, max = Integer.MIN_VALUE;
-
-            for(int i = 0; i < size; i++) {
-                char ch = s.charAt(i);
-                if(ch == '(') {
-                    stack.push(ch);
-                    cnt = 0;
-                }
-                else {
-                    if(!stack.isEmpty() && ch == ')') {
-                       if(stack.peek() == '(') {
-                           stack.pop();
-                           cnt++;
-                       }
-                    }
-                }
-                if(stack.isEmpty()) cnt = 0;
+            int t=in.nextInt();
+            while(t-- > 0) {
+                // write your code here
             }
 
-            out.print(max);
-            out.print(" " + occur);
             out.close();
         } catch (Exception e) {
             e.printStackTrace();
-            return;
         }
     }
 }
