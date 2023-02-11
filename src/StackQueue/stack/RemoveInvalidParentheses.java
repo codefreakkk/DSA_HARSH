@@ -56,7 +56,7 @@ public class RemoveInvalidParentheses {
     }
 
     public static void main(String[] args) {
-        String s = "(()()";
+        String s = "(()(";
         List<String> ans = removeInvalidParentheses(s);
         System.out.println(ans);
 
