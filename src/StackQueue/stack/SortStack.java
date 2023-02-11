@@ -40,6 +40,6 @@ public class SortStack {
         stack.push(3);
         stack.push(41);
         Stack<Integer> ans = sortStack(stack);
-        System.out.println(ans.peek());
+        System.out.println(ans);
     }
 }
