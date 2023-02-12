@@ -1,5 +1,5 @@
 public class Test {
     public static void main(String[] args) {
-        System.out.println(0.125 > 0.5);
+        System.out.println(Math.ceil(1 / 5));
     }
 }
