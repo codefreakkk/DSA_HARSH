@@ -77,10 +77,8 @@ public class DequeImplementation {
         if((front == 0 && rear == size - 1) || (front != 0 && rear == (front - 1) % (size - 1))) {
             return true;
         }
-        else
-        {
-            return false;
-        }
+        else return false;
+
     }
 
     public static void main(String[] args) {
