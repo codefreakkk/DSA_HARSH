@@ -60,7 +60,6 @@ public class AlienDictonary {
         return ans;
     }
 
-
     public static void main(String[] args) {
 
     }
