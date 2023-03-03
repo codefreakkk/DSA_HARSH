@@ -30,22 +30,6 @@ public class CREDIT_SUSSIE_PROBLEMA {
         solve(list);
         return sum;
     }
-
-    public int findTargetWithoutRecursion(int n) {
-        List<Integer> list = new ArrayList<>();
-        for (int i = 0; i < n; i++)
-            list.add(i + 1);
-
-        int sum = 0;
-        while (list.size() > 1) {
-            for (int i = 0; i < list.size(); i += 2)
-                sum += i;
-
-            for (int i = 0; i < list.size(); i += 2)
-                list.remove(i);
-        }
-        return sum;
-    }
     public static void main(String[] args) {
         CREDIT_SUSSIE_PROBLEMA o = new CREDIT_SUSSIE_PROBLEMA();
         int n = 7;
