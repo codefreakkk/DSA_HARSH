@@ -57,7 +57,29 @@ public class SubsetSumEqualsToTarget {
         }
         return dp[n - 1][k];
     }
-    public static void main(String[] args) {
 
+    // tabulation  + SpaceOptimzation
+    public boolean subsetSumTabulationSpaceOptimization(int[] nums, int k) {
+        int n = nums.length;
+        boolean[] prev = new boolean[k + 1];
+        prev[0] = true;
+
+        if (nums[0] <= k)
+            prev[nums[0]] = true;
+
+        for (int i = 1; i < n; i++) {
+            boolean[] current = new boolean[k + 1];
+            for (int target = 1; target <= k; target++) {
+                boolean notPick = prev[target];
+                boolean pick = false;
+                if (nums[i] <= target) {
+                    pick = prev[target - nums[i]];
+                }
+                current[target] = notPick || pick;
+            }
+            prev = current;
+        }
+        return prev[k];
     }
+    public static void main(String[] args) {}
 }
