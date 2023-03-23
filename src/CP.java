@@ -67,7 +67,7 @@ public class CP {
             // code here
             int t=in.nextInt();
             while(t-- > 0) {
-                // write your code here
+
             }
 
             out.close();
