@@ -19,24 +19,22 @@ public class TRILOGY_PROBLEM_1 {
         return xor;
     }
 
-    private void solve(int index, int[] nums, List<Integer> temp, List<List<Integer>> subsequence, int[] dp) {
+    private void solve(int index, int[] nums, List<Integer> temp, List<List<Integer>> subsequence, ) {
         if (index == nums.length) {
             subsequence.add(new ArrayList<>(temp));
             return;
         }
-        if (dp[index] != -1) return;
 
         // not pick
-        solve(index + 1, nums, temp, subsequence, dp);
+        solve(index + 1, nums, temp, subsequence);
 
         // pick
         if (temp.size() == 0 || ((temp.get(temp.size() - 1) < nums[index]) && bitCount(getXOR(temp)) <= bitCount(nums[index]))) {
             temp.add(nums[index]);
-            solve(index + 1, nums, temp, subsequence, dp);
+            solve(index + 1, nums, temp, subsequence);
             // backtrack
             temp.remove(temp.size() - 1);
         }
-
     }
 
     public int findXORSubsequence(int[] nums) {
@@ -48,7 +46,7 @@ public class TRILOGY_PROBLEM_1 {
         int[] dp = new int[n + 1];
         Arrays.fill(dp, -1);
 
-        solve(0, nums, temp, subsequence, dp);
+        solve(0, nums, temp, subsequence);
 
         Set<Integer> set = new HashSet<>();
         for (List<Integer> it : subsequence) {
