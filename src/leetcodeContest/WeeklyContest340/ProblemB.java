@@ -21,14 +21,8 @@ public class ProblemB {
         }
 
         for (int i = 0; i < n; i++) {
-            List<Integer> index = map.get(nums[i]);
+            List<Integer> indices = map.get(nums[i]);
 
-            long value = 0;
-            for (int it : index) {
-                if (it == i) continue;
-                value += Math.abs(i - it);
-            }
-            ans[i] = value;
         }
         return ans;
     }
