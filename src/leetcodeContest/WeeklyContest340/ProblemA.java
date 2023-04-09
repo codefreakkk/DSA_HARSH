@@ -2,11 +2,13 @@ package leetcodeContest.WeeklyContest340;
 
 public class ProblemA {
 
-    private int isPrime(int num) {
-        for (int i = 2; i < num; i++) {
-            if (num % i == 0) return 0;
+    private boolean isPrime(int num) {
+        if (num <= 1) return false;
+        if (num == 2) return true;
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) return false;
         }
-        return num;
+        return true;
     }
 
     public int diagonalPrime(int[][] nums) {
@@ -14,8 +16,14 @@ public class ProblemA {
 
         int max = Integer.MIN_VALUE;
         for (int i = 0; i < n; i++) {
-            max = Math.max(max, isPrime(nums[i][i]));
-            max = Math.max(max, isPrime(nums[i][n - i - 1]));
+            if (isPrime(nums[i][i])) {
+                max = Math.max(max, nums[i][i]);
+            }
+        }
+        for (int i = 0; i < n; i++) {
+            if (isPrime(nums[n - i - 1][i])) {
+                max = Math.max(max, nums[n - i - 1][i]);
+            }
         }
         return max;
     }
