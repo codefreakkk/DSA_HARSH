@@ -19,7 +19,7 @@ public class TRILOGY_PROBLEM_1 {
         return xor;
     }
 
-    private void solve(int index, int[] nums, List<Integer> temp, List<List<Integer>> subsequence, ) {
+    private void solve(int index, int[] nums, List<Integer> temp, List<List<Integer>> subsequence ) {
         if (index == nums.length) {
             subsequence.add(new ArrayList<>(temp));
             return;
