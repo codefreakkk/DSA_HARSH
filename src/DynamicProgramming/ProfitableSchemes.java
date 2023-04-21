@@ -5,6 +5,7 @@ public class ProfitableSchemes {
 
     private int MOD = (int) 1e9+7;
 
+    // memoization
     private int solve(int index, int people, int minProfit, int[] group, int[] profit, int[][][] dp) {
         if (people < 0) return 0;
         if (index == profit.length) {
@@ -20,6 +21,7 @@ public class ProfitableSchemes {
         return dp[index][people][minProfit] = (notPick + pick) % MOD;
     }
 
+    // memoization
     public int profit(int n, int minProfit, int[] group, int[] profit) {
         int len = group.length;
         int[][][] dp = new int[len][n][minProfit];
@@ -30,7 +32,6 @@ public class ProfitableSchemes {
 
         return solve(0, n, minProfit, group, profit, dp);
     }
-
 
     public static void main(String[] args) {
 
