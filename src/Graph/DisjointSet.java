@@ -47,8 +47,7 @@ public class DisjointSet {
     public void unionBySize(int u, int v) {
         int parent_u = findParent(u);
         int parent_v = findParent(v);
-        if (parent_u == parent_v)
-                return;
+        if (parent_u == parent_v) return;
 
         if (size.get(parent_u) < size.get(parent_v)) {
             parent.set(parent_u, parent_v);
