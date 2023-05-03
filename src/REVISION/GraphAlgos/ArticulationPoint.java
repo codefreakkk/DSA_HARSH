@@ -4,6 +4,7 @@ import java.util.*;
 
 public class ArticulationPoint {
     private int timer = 1;
+
     private void dfs(int node, int parent, ArrayList<ArrayList<Integer>> adj, int[] low, int[] inTime,
                      int[] visited, int[] mark) {
         visited[node] = 1;
