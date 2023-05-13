@@ -20,8 +20,8 @@ public class ReverseLinkedListRecursion {
         l.insertLast(10);
         l.insertLast(20);
         l.insertLast(30);
-//        ReverseLinkedListRecursion obj = new ReverseLinkedListRecursion();
-//        obj.reverse(l.head, l.head, l.tail);
-//        System.out.println(l.head.value);
+        ReverseLinkedListRecursion obj = new ReverseLinkedListRecursion();
+        obj.reverse(l.head, l.head, l.tail);
+        System.out.println(l.head.value);
     }
 }

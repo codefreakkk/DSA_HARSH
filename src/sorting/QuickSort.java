@@ -10,7 +10,7 @@ public class QuickSort {
     }
 
     public static int partition(int[] nums, int start, int end) {
-        int pivot = nums[0];
+        int pivot = nums[start];
 
         // find the minimum numbers than pivot
         int count = 0;
@@ -51,7 +51,7 @@ public class QuickSort {
     }
 
     public static void main(String[] args) {
-        int[] nums = {3, 4, 2, 4, 1};
+        int[] nums = {5, 4, 3, 2, 1};
         sort(nums, 0, nums.length - 1);
         System.out.println(Arrays.toString(nums));
     }
