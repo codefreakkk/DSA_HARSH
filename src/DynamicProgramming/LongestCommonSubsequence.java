@@ -26,7 +26,7 @@ public class LongestCommonSubsequence {
     }
 
     // tabulation
-    public int longestCommonSubsequenceTabulation(String text1, String text2) {
+    public static int longestCommonSubsequenceTabulation(String text1, String text2) {
         int n = text1.length();
         int m = text2.length();
 
@@ -45,10 +45,12 @@ public class LongestCommonSubsequence {
                 }
             }
         }
+
         return dp[n][m];
     }
 
     public static void main(String[] args) {
-
+        String s1 = "babcd", s2 = "dcbab";
+        System.out.println(longestCommonSubsequenceTabulation(s1, s2));
     }
 }

@@ -1,9 +1,11 @@
 package DynamicProgramming;
 
+import java.util.Arrays;
+
 public class LongestCommonSubstring {
 
     // tabulation
-    public int longestCommonSubstring(String s1, String s2, int n, int m) {
+    public static int longestCommonSubstring(String s1, String s2, int n, int m) {
         int[][] dp = new int[n + 1][m + 1];
         for (int j = 0; j <= m; j++) dp[0][j] = 0;
         for (int i = 0; i <= n; i++) dp[i][0] = 0;
@@ -17,10 +19,12 @@ public class LongestCommonSubstring {
                 }
             }
         }
+
         return ans;
     }
 
     public static void main(String[] args) {
-
+        String s1 = "ABCDGH", s2 = "ACDGHR";
+        System.out.println(longestCommonSubstring(s1, s2, s1.length(), s2.length()));
     }
 }
