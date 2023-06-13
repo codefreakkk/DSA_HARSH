@@ -13,8 +13,8 @@ public class EditDistance {
         if (str1.charAt(i) == str2.charAt(j)) {
             return dp[i][j] = solve(i - 1, j - 1, str1, str2, dp);
         }
-        int insert = solve(i - 1, j, str1, str2, dp);
-        int delete = solve(i, j - 1, str1, str2, dp);
+        int insert = solve(i, j - 1, str1, str2, dp);
+        int delete = solve(i - 1, j, str1, str2, dp);
         int replace = solve(i - 1, j - 1, str1, str2, dp);
 
         int min = 1 + Math.min(insert, Math.min(delete, replace));
@@ -48,8 +48,8 @@ public class EditDistance {
                     dp[i][j] = dp[i - 1][j - 1];
                 }
                 else {
-                    int insert = dp[i - 1][j];
-                    int delete = dp[i][j - 1];
+                    int delete = dp[i - 1][j];
+                    int insert = dp[i][j - 1];
                     int replace = dp[i - 1][j - 1];
 
                     int min = 1 + Math.min(insert, Math.min(delete, replace));
