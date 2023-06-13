@@ -9,6 +9,7 @@ public class CountSubsetsWithSumK {
         if (index == 0) {
             // edge case if subset contains 0
             if (target == 0 && nums[0] == target) return 2;
+
             else if (target == 0 || nums[0] == target) return 1;
             else return 0;
         }
