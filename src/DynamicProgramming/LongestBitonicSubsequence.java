@@ -30,6 +30,7 @@ public class LongestBitonicSubsequence {
                 }
             }
         }
+
         int ans = 0;
         for (int i = 0; i < n; i++) {
             ans = Math.max(ans, (dp1[i] + dp2[i]) - 1);
@@ -37,9 +38,8 @@ public class LongestBitonicSubsequence {
         return ans;
     }
 
-
     public static void main(String[] args) {
-        int[] nums = {9,8,1,7,6,5,4,3,2,1};
+        int[] nums = {1, 2, 5, 3, 2};
         System.out.println(longestBitonicSubsequence(nums));
     }
 }
