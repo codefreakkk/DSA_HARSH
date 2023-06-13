@@ -28,7 +28,7 @@ public class  PrintLongestIncreasingSubsequence {
         }
         ArrayList<Integer> ans = new ArrayList<>();
         ans.add(nums[lastIndex]);
-        while (nums[lastIndex] != lastIndex) {
+        while (hash[lastIndex] != lastIndex) {
             lastIndex = hash[lastIndex];
             ans.add(nums[lastIndex]);
         }
