@@ -34,8 +34,10 @@ public class MinimumTimeTakenToBurnTree {
 
     public int minimumTimeTaken(BinaryTreeNode node, int target) {
         BinaryTreeNode targetNode = getTargetNode(node, target);
+
         Queue<BinaryTreeNode> queue = new LinkedList<>();
         HashMap<BinaryTreeNode, Boolean> visited = new HashMap<>();
+
         HashMap<BinaryTreeNode, BinaryTreeNode> parent = new HashMap<>();
         markParent(node, parent);
 
