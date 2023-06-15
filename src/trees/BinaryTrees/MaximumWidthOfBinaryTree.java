@@ -18,12 +18,12 @@ public class MaximumWidthOfBinaryTree {
         int ans = 0;
 
         queue.offer(new TPair(node, 0));
-        while(!queue.isEmpty()) {
+        while (!queue.isEmpty()) {
             int size = queue.size();
             int min = queue.peek().index;
             int first = 0, last = 0;
 
-            for(int i = 0; i < size; i++) {
+            for (int i = 0; i < size; i++) {
                 BinaryTreeNode element = queue.peek().node;
                 int current_index = queue.peek().index - min;
                 queue.poll();

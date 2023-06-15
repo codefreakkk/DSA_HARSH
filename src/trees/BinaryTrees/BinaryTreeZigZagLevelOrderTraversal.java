@@ -5,28 +5,28 @@ import java.util.*;
 public class BinaryTreeZigZagLevelOrderTraversal {
     public List<List<Integer>> zigzagLevelOrderTraversal(BinaryTreeNode node) {
         List<List<Integer>> ans = new ArrayList<>();
-        Queue<BinaryTreeNode> queue = new LinkedList<>();
+        if (node == null) return ans;
 
-        boolean zig = false;
-        queue.add(node);
-        while(!queue.isEmpty()) {
-            int level = queue.size();
+        boolean flag = true;
+        Queue<BinaryTreeNode> queue = new LinkedList<>();
+        queue.offer(node);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
             List<Integer> output = new ArrayList<>();
 
-            for(int i = 0; i < level; i++) {
-                BinaryTreeNode element = queue.remove();
-                if(element != null) {
-                    if(element.left != null) queue.add(element.left);
-                    if(element.right != null) queue.add(element.right);
-                }
-                if(element != null) output.add(element.data);
+            for (int i = 0; i < size; i++) {
+                BinaryTreeNode element = queue.poll();
+                output.add(element.data);
+                if (element.left != null) queue.offer(element.left);
+                if (element.right != null) queue.offer(element.right);
             }
 
-            if(output.size() != 0) {
-                if(zig) Collections.reverse(output);
+            if (flag) ans.add(output);
+            else {
+                Collections.reverse(output);
                 ans.add(output);
             }
-            zig = !zig;
+            flag = !flag;
         }
 
         return ans;
