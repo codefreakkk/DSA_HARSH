@@ -1,7 +1,7 @@
 package Graph;
 
 import java.util.*;
-// not solved
+// problem not solved
 public class SumOfDistancesInTree {
 
     private int dfs(List<List<Integer>> adj, int[] visited, int node) {
