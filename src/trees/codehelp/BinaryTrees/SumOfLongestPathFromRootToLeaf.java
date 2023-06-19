@@ -6,7 +6,7 @@ public class SumOfLongestPathFromRootToLeaf {
 
         solve(node.left, ans, sum + node.data, nodeLength + 1);
         solve(node.right, ans, sum + node.data, nodeLength + 1);
-        if(nodeLength > ans[1]) {
+        if(nodeLength >= ans[1]) {
             ans[0] = sum + node.data;
             ans[1] = nodeLength;
         }

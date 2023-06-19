@@ -15,7 +15,5 @@ public class ConstructBinarySearchTreeFromPreorder {
         return solve(preorder, Integer.MAX_VALUE, new int[]{0});
     }
 
-    public static void main(String[] args) {
-
-    }
+    public static void main(String[] args) {}
 }
