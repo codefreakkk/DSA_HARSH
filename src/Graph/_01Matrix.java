@@ -2,7 +2,7 @@ package Graph;
 
 import java.util.*;
 
-public class _01Matrix {
+public class  _01Matrix {
     class Tupple {
         int row, col, steps;
         public Tupple(int row, int col, int steps) {

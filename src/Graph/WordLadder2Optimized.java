@@ -30,6 +30,7 @@ public class WordLadder2Optimized {
         HashMap<String, Integer> map = new HashMap<>();
         Queue<String> queue = new LinkedList<>();
         Set<String> set = new HashSet<>();
+
         for (String str : wordList)
             set.add(str);
 
