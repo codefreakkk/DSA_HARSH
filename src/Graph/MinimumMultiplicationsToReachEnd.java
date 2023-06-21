@@ -16,6 +16,7 @@ public class MinimumMultiplicationsToReachEnd {
         int[] distance = new int[(int)1e5];
         for (int i = 0; i < 1e5; i++)
             distance[i] = -1;
+
         distance[start] = 0;
 
         Queue<Pair> queue = new LinkedList<>();
