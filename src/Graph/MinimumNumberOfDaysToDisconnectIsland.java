@@ -3,7 +3,14 @@ package Graph;
 public class MinimumNumberOfDaysToDisconnectIsland {
     private int timer = 0;
     private boolean articulation = false;
-    private void dfs(int row, int col, int parentRow, int parentCol, int[][] low, int[][] inTime, int[][] visited) {
+
+    private boolean isValid(int row, int col, int[][] grid, int[][] visited) {
+        int n = grid.length;
+        int m = grid[0].length;
+        return (row >= 0 && row < n) && (col >= 0 && col < m) && (grid[row][col] == 1);
+    }
+
+    private void dfs(int row, int col, int parentRow, int parentCol, int[][] low, int[][] inTime, int[][] grid, int[][] visited) {
         visited[row][col] = 1;
         low[row][col] = inTime[row][col] = timer++;
 
@@ -15,15 +22,17 @@ public class MinimumNumberOfDaysToDisconnectIsland {
             int newRow = row + delRow[i];
             int newCol = col + delCol[i];
 
-            if (visited[newRow][newCol] == 0) {
-                child++;
-                dfs(newRow, newCol, row, col, low, inTime, visited);
-                low[row][col] = Math.min(low[row][col], low[newRow][newCol]);
-                if (low[newRow][newCol] >= inTime[row][col] && parentRow != -1)
-                    articulation = true;
+            if (isValid(newRow, newCol, grid, visited)) {
+                if (visited[newRow][newCol] == 0) {
+                    child++;
+                    dfs(newRow, newCol, row, col, low, inTime, grid, visited);
+                    low[row][col] = Math.min(low[row][col], low[newRow][newCol]);
+                    if (low[newRow][newCol] >= inTime[row][col] && parentRow != -1)
+                        articulation = true;
+                }
+                else
+                    low[row][col] = Math.min(inTime[newRow][newCol], low[row][col]);
             }
-            else
-                low[row][col] = Math.min(inTime[newRow][newCol], low[row][col]);
         }
 
         // check for parent
@@ -42,11 +51,11 @@ public class MinimumNumberOfDaysToDisconnectIsland {
         int lands = 0, isLands = 0;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                if (grid[i][j] == 0) {
+                if (grid[i][j] == 1) {
                     lands++;
                     if (visited[i][j] == 0) {
                         isLands++;
-                        dfs(i, j, -1, -1, low, inTime, visited);
+                        dfs(i, j, -1, -1, low, inTime, grid, visited);
                     }
                 }
             }

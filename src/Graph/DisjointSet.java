@@ -39,7 +39,7 @@ public class DisjointSet {
         }
         else {
             parent.set(parent_v, parent_u);
-            int rank_u = rank.get(u);
+            int rank_u = rank.get(parent_u);
             rank.set(parent_u, rank_u + 1);
         }
     }

@@ -60,6 +60,7 @@ public class NumberOfIslands2 {
             if (visited[u][v] == 1)
                 continue;
 
+            visited[u][v] = 1;
             count++;
             for (int i = 0; i < 4; i++) {
                 int row = u + delRow[i];

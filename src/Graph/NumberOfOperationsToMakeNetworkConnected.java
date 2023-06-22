@@ -44,6 +44,7 @@ public class NumberOfOperationsToMakeNetworkConnected {
 
     public int makeConnected(int V, int[][] edges) {
         DisjointSet ds = new DisjointSet(V);
+
         int extraEdges= 0;
         for (int i = 0; i < edges.length; i++) {
             int u = edges[i][0];
