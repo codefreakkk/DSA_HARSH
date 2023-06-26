@@ -2,7 +2,7 @@ package Heaps;
 
 import java.util.*;
 
-public class ReplaceElementsByRanksInArray {
+public class    ReplaceElementsByRanksInArray {
     class Pairs {
         int data, index;
         public Pairs(int data, int index) {
