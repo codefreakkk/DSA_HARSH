@@ -30,7 +30,7 @@ public class SmallestRangeCoveringElementsFromKLists {
             max = Math.max(max, current);
             pq.offer(new Tupple(current, i, 0));
         }
-
+ 
         int start = pq.peek().data, end = max;
         while (!pq.isEmpty()) {
             Tupple top = pq.poll();
