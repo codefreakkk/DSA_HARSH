@@ -40,14 +40,16 @@ public class ReorderList {
             Node temp = firstHead.next;
             firstHead.next = secondHead;
             firstHead = temp;
-
             // handle arrangement from second head
             temp = secondHead.next;
             secondHead.next = firstHead;
             secondHead = temp;
         }
 
-        if(firstHead != null) firstHead.next = null;
+        if(firstHead != null) {
+            System.out.println(-1);
+            firstHead.next = null;
+        }
     }
 
     public static void main(String[] args) {
@@ -55,8 +57,8 @@ public class ReorderList {
         sl.insertLast(1);
         sl.insertLast(2);
         sl.insertLast(3);
-//        sl.insertLast(4);
-//        sl.insertLast(5);
+        sl.insertLast(4);
+        sl.insertLast(5);
         reorderList(sl.head);
         sl.display();
     }

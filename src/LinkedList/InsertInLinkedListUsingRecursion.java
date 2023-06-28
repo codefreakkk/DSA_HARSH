@@ -26,7 +26,7 @@ public class InsertInLinkedListUsingRecursion extends SinglyLinkedListCreation {
         ll.insertLast(20);
         ll.insertLast(30);
         ll.insertLast(40);
-        ll.insertUsingRecursion(0, 69);
+        ll.insertUsingRecursion(3, 69);
         ll.display();
     }
 }
