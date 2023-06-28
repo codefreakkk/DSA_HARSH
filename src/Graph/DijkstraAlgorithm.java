@@ -29,6 +29,7 @@ public class DijkstraAlgorithm {
                 int newDistance = current.get(1) + dist;
                 int adjacentNode = current.get(0);
 
+
                 if (newDistance < distance[adjacentNode]) {
                     distance[adjacentNode] = newDistance;
                     pq.offer(new Pair(newDistance, adjacentNode));
