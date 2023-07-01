@@ -18,7 +18,6 @@ public class CombinationSum3 {
         output.remove(output.size() - 1);
         sum -= index;
         solve(k, n, index + 1, sum, element, output, answer);
-        return;
     }
 
     public static List<List<Integer>> combinationSum3(int k, int n) {

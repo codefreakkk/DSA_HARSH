@@ -1,6 +1,6 @@
 package recursion;
 import java.util.*;
-public class ReversePair{
+public class ReversePair {
     static int merge(int[] nums, int low, int mid, int high) {
         int cnt = 0;
         int j = mid + 1;
