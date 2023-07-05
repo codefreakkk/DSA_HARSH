@@ -47,7 +47,7 @@ public class Permutation2ndApprocach {
     }
 
     public static void main(String[] args) {
-        int arr[] = {1, 2, 1};
+        int arr[] = {1, 2, 3};
         List<List<Integer>> ans = permute(arr);
         for(List<Integer> i : ans) {
             System.out.println(i);
