@@ -3,6 +3,7 @@ import java.util.*;
 
 public class WordBreak {
 
+    // memoization code
     private boolean solve(int index, int n, String s, Set<String> set, int[] dp) {
         if (index >= n) return true;
 
@@ -20,6 +21,24 @@ public class WordBreak {
         return false;
     }
 
+    // tabulation code
+    public boolean tabulation(String s, Set<String> set) {
+        int n = s.length();
+
+        int[] dp = new int[n + 1];
+        dp[n] = 1;
+
+        for (int index = n; index >= 0; index--) {
+            for (int i = index; i < n; i++) {
+                if (set.contains(s.substring(index, i + 1)) && dp[i + 1] == 1) {
+                    dp[index] = 1;
+                    break;
+                }
+            }
+        }
+        return dp[0] == 1 ? true : false;
+    }
+
     public boolean wordBreak(String s, List<String> wordDict) {
         int n = s.length();
 
@@ -29,7 +48,7 @@ public class WordBreak {
         int[] dp = new int[n + 1];
         Arrays.fill(dp, -1);
 
-        return solve(0, n, s, set, dp);
+        return tabulation(s, set);
     }
 
     public static void main(String[] args) {
