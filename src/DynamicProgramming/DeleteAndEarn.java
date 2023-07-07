@@ -3,44 +3,41 @@ import java.util.*;
 
 public class DeleteAndEarn {
 
-    private int solve(int index, int prev, List<Integer> list, HashMap<Integer, Integer> map) {
-        if (index >= list.size()) return 0;
-
-        int pick = 0;
-        if (prev == -1) {
-            pick = list.get(index) * map.get(list.get(index)) + solve(index + 1, index, list, map);
+    private int solve(int index, int[] nums, int[] dp) {
+        if (index >= nums.length) {
+            return 0;
         }
-        else {
-            if (list.get(prev) + 1 != list.get(index)) {
-                pick = list.get(index) * map.get(list.get(index)) + solve(index + 1, index, list, map);
-            }
-        }
-        int notPick = solve(index + 1, prev, list, map);
 
-        return Math.max(pick, notPick);
+        if (dp[index] != -1) return dp[index];
+
+        int notPick = solve(index + 1, nums, dp);
+        int pick = solve(index + 2, nums, dp) + nums[index] * index;
+
+        return dp[index] = Math.max(notPick, pick);
     }
 
     public int deleteAndEarn(int[] nums) {
         int n = nums.length;
 
-        HashMap<Integer, Integer> map = new HashMap<>();
-        for (int i : nums) {
-            map.put(i, map.getOrDefault(i, 0) + 1);
+        int max = 0;
+        for (int it : nums) {
+            max = Math.max(max, it);
         }
 
-        List<Integer> list = new ArrayList<>();
-        for (Map.Entry<Integer, Integer> mp : map.entrySet()) {
-            list.add(mp.getKey());
+        int[] list = new int[max + 1];
+        for (int it : nums) {
+            list[it]++;
         }
 
-        Collections.sort(list);
-        return solve(0, -1, list, map);
+        int[] dp = new int[max + 1];
+        Arrays.fill(dp, -1);
+
+        return solve(1, list, dp);
     }
-
 
     public static void main(String[] args) {
         DeleteAndEarn o = new DeleteAndEarn();
-        int[] nums = {1,2,3,15,16,17,18};
+        int[] nums = {1,8,5,9,6,9,4,1,7,3,3,6,3,3,8,2,6,3,2,2,1,2,9,8,7,1,1,10,6,7,3,9,6,10,5,4,10,1,6,7,4,7,4,1,9,5,1,5,7,5};
         System.out.println(o.deleteAndEarn(nums));
     }
 }
