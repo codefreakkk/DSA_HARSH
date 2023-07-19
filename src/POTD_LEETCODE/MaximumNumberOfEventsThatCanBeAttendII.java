@@ -18,6 +18,8 @@ public class MaximumNumberOfEventsThatCanBeAttendII {
         return ans;
     }
 
+
+    // memoization
     private int solve(int index, int k, int[][] events, int[][] dp) {
         if (k == 0 || index >= events.length || index == -1) {
             return 0;
@@ -35,6 +37,7 @@ public class MaximumNumberOfEventsThatCanBeAttendII {
         return dp[index][k] = Math.max(attend, notAttend);
     }
 
+    // tabulation
     public int tabulation(int[][] events, int K) {
         int n = events.length;
         int[][] dp = new int[n + 1][K + 1];
