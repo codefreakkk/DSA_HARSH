@@ -1,7 +1,8 @@
 package DynamicProgramming;
 import java.util.*;
 
-public class  MinimumCostToCutAStick {
+public class
+MinimumCostToCutAStick {
 
     // memoization
     private int solve(int i, int j, List<Integer> nums, int[][] dp) {
