@@ -1,8 +1,10 @@
+package CP_CODES.DIV2_1856;
+
 
 import java.util.*;
 import java.io.*;
 
-public class CP {
+public class ProblemA {
     static class FastReader{
         BufferedReader br;
         StringTokenizer st;
