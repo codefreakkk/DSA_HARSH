@@ -12,7 +12,7 @@ public class _01Knapsack {
         }
         if (dp[index][w] != -1) return dp[index][w];
 
-        int notPick = 0 + solve(index - 1, w, wt, val, dp);
+        int notPick = solve(index - 1, w, wt, val, dp);
 
         int pick = Integer.MIN_VALUE;
         if (wt[index] <= w) {
