@@ -7,32 +7,49 @@ public class ProblemC {
 
         @Override
         public int compare(List<Integer> o1, List<Integer> o2) {
-            if (o1.get(0) == o2.get(0)) {
-                return o2.get(2) - o1.get(2);
-            }
             return o1.get(0) - o2.get(0);
         }
+    }
+
+    private static int findNextIndex(int index, int end, List<List<Integer>> offers) {
+        int low = index, high = offers.size() - 1;
+        int ans = -1;
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            int start = offers.get(mid).get(0);
+            if (start > end) {
+                ans = mid;
+                high = mid - 1;
+            }
+            else low = mid + 1;
+        }
+        return ans;
+    }
+
+    private static int solve(int index, int n, List<List<Integer>> offers, int[] dp) {
+        if (index == n) return 0;
+        if (dp[index] != -1) {
+            return dp[index];
+        }
+
+        int notSell = solve(index + 1, n, offers, dp);
+
+        int nextIndex = findNextIndex(index + 1, offers.get(index).get(1), offers);
+        int sell = offers.get(index).get(2);
+        if (nextIndex != -1) {
+            sell += solve(nextIndex, n, offers, dp);
+        }
+        return dp[index] = Math.max(sell, notSell);
     }
 
     public static int maximizeTheProfit(int n, List<List<Integer>> offers) {
         Collections.sort(offers, new Comp());
 
-        int ans = 0, size = offers.size();
-        for (int i = 0; i < size; i++) {
-            int max = offers.get(i).get(2);
-            int previous = offers.get(i).get(1);
+        int[] dp = new int[offers.size() + 1];
+        Arrays.fill(dp, -1);
 
-            for (int j = i + 1; j < size; j++) {
-                if (offers.get(j).get(0) == offers.get(j - 1).get(0)) {
-                    continue;
-                }
-                if (offers.get(j).get(0) > previous) {
-                    max += offers.get(j).get(2);
-                }
-            }
-            ans = Math.max(max, ans);
-        }
-        return ans;
+        return solve(0, offers.size(), offers, dp);
     }
 
     public static void main(String[] args) {
