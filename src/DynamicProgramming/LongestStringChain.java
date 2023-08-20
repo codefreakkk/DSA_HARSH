@@ -2,7 +2,7 @@ package DynamicProgramming;
 
 import java.util.Arrays;
 
-public class LongestStringChain {
+public class      LongestStringChain {
 
     private boolean isPossible(String s1, String s2) {
         if (s1.length() != s2.length() + 1) return false;
