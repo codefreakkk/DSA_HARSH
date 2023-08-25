@@ -43,20 +43,23 @@ public class InterleavingString {
         int[][][] dp = new int[len1 + 1][len2 + 1][len3 + 1];
         dp[len1][len2][len3] = 1;
 
-        for (int i = len1 - 1; i >= 0; i--) {
-            for (int j = len2 - 1; j >= 0; j--) {
-                for (int index =  len3 - 1; index >= 0; index--) {
+        for (int index = len3 - 1; index >= 0; index--) {
+            for (int i = len1 - 1; i >= 0; i--) {
+                for (int j = len2 - 1; j >= 0; j--) {
                     boolean left = false, right = false;
 
-                    if (i < len1 && s1.charAt(i) == s3.charAt(index)) {
+                    if (s1.charAt(i) == s3.charAt(index)) {
                         left = dp[i + 1][j][index + 1] == 1 ? true : false;
                     }
-                    if (j < len2 && s2.charAt(j) == s3.charAt(index)) {
+                    if (s2.charAt(j) == s3.charAt(index)) {
                         right = dp[i][j + 1][index + 1] == 1 ? true : false;
                     }
                     dp[i][j][index] = (left || right) ? 1 : 0;
                 }
             }
+        }
+        for (int[][] d : dp) {
+            for (int[] dr : d) System.out.println(Arrays.toString(dr));
         }
         return dp[0][0][0] == 1 ? true : false;
     }
