@@ -38,6 +38,7 @@ public class Problem2 {
         List<Employee> data = new ArrayList<>();
         addRawData(data);
 
+        // get all departments
         Set<String> departments = new HashSet<>();
         for (Employee employee : data) {
             departments.add(employee.department);
@@ -63,6 +64,7 @@ public class Problem2 {
         Problem2 o = new Problem2();
         List<Dictionary> ans = o.highestSalaryInDept();
 
+        // printing answer
         for (Dictionary it : ans) {
             System.out.println(it.department + " " + it.employeeId);
         }
