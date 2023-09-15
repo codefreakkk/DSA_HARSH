@@ -1,4 +1,4 @@
-package RANDOM_PROBLEM;
+package COMPANY_PROBLEMS;
 
 import java.util.*;
 

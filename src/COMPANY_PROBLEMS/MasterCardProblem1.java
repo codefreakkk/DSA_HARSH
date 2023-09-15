@@ -1,6 +1,4 @@
-package RANDOM_PROBLEM;
-
-import java.util.Arrays;
+package COMPANY_PROBLEMS;
 
 public class MasterCardProblem1 {
 
