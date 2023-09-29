@@ -3,11 +3,52 @@ import java.util.*;
 
 public class MinCostToConnectAllPoints {
 
-    class Pair {
-        int weight, node;
-        public Pair(int node, int weight) {
-            this.node = node;
-            this.weight = weight;
+    class Edge {
+        int source, destination, distance;
+        public Edge(int source, int destination, int distance) {
+            this.source = source;
+            this.destination = destination;
+            this.distance = distance;
+        }
+
+    }
+
+    class DSU {
+        List<Integer> parent, size;
+        public DSU(int n) {
+            this.parent = new ArrayList<>();
+            this.size = new ArrayList<>();
+            for (int i = 0; i <= n; i++) {
+                parent.add(i);
+                size.add(1);
+            }
+        }
+
+        public int findParent(int node) {
+            if (parent.get(node) == node) {
+                return node;
+            }
+
+            int ultimateParent = findParent(parent.get(node));
+            parent.set(node, ultimateParent);
+            return ultimateParent;
+        }
+
+        public void unionBySize(int u, int v) {
+            int parent_u = findParent(u);
+            int parent_v = findParent(v);
+
+            if (parent_u == parent_v) {
+                return;
+            }
+            if (size.get(parent_u) < size.get(parent_v)) {
+                parent.set(parent_u, parent_v);
+                size.set(parent_v, size.get(parent_u) + size.get(parent_v));
+            }
+            else {
+                parent.set(parent_v, parent_u);
+                size.set(parent_u, size.get(parent_u) + size.get(parent_v));
+            }
         }
     }
 
@@ -17,42 +58,26 @@ public class MinCostToConnectAllPoints {
 
     public int minCostToConnectPoints(int[][] points) {
         int n = points.length;
-        List<List<Pair>> adj = new ArrayList<>();
-        for (int i = 0; i < n; i++) {
-            adj.add(new ArrayList<>());
-        }
+        List<Edge> adj = new ArrayList<>();
 
-        // build graph
         for (int i = 0; i < n; i++) {
             for (int j = i + 1; j < n; j++) {
-                int weight = manhattanDistance(points[i], points[j]);
-                adj.get(i).add(new Pair(j, weight));
+                int distance = this.manhattanDistance(points[i], points[j]);
+                adj.add(new Edge(i, j, distance));
             }
         }
-
-        int[] visited = new int[n];
-        PriorityQueue<Pair> pq = new PriorityQueue<>((a, b) -> a.weight - b.weight);
-        pq.offer(new Pair(0, 0));
+        Collections.sort(adj, (a, b) -> a.distance - b.distance);
+        DSU o = new DSU(n);
 
         int sum = 0;
-        while (!pq.isEmpty()) {
-            Pair pair = pq.poll();
-            int node = pair.node;
-            int weight = pair.weight;
+        for (Edge edge : adj) {
+            int source = edge.source;
+            int destination = edge.destination;
+            int distance = edge.distance;
 
-            if (visited[node] == 1) {
-                continue;
-            }
-            sum += weight;
-            visited[node] = 1;
-
-            for (Pair p : adj.get(node)) {
-                int adjNode = p.node;
-                int adjWeight = p.weight;
-
-                if (visited[adjNode] == 0) {
-                    pq.offer(new Pair(adjNode, adjWeight));
-                }
+            if (o.findParent(source) != o.findParent(destination)) {
+                sum += distance;
+                o.unionBySize(source, destination);
             }
         }
         return sum;
