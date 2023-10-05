@@ -1,4 +1,4 @@
-package CODES;
+package JUST_CODES;
 
 import java.util.Arrays;
 

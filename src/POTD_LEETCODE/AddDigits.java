@@ -9,6 +9,7 @@ public class AddDigits {
             num /= 10;
         }
         return temp;
+
     }
 
     public static int addDigits(int num) {

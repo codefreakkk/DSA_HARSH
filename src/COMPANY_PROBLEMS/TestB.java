@@ -1,7 +1,7 @@
 package COMPANY_PROBLEMS;
 import java.util.*;
 
-public class Barclays_1 {
+public class TestB {
 
     public static String generateString(String s1, String s2) {
         int l1 = s1.length();
