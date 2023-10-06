@@ -43,7 +43,6 @@ public class TestB {
     }
 
     public static void main(String[] args) {
-        String s1 = "AAAA", s2 = "FTFF";
-        System.out.println(generateString(s1, s2));
+
     }
 }

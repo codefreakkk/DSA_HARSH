@@ -6,6 +6,7 @@ public class AddToArrayFormOfInteger {
     public static List<Integer> addToArrayForm(int[] nums, int k) {
         String val = String.valueOf(k);
         int size1 = nums.length, size2 = val.length(), carry = 0;
+
         List<Integer> ans = new ArrayList<>();
         int i = size1 - 1, j = size2 - 1;
 
