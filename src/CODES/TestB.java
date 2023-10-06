@@ -1,4 +1,4 @@
-package COMPANY_PROBLEMS;
+package CODES;
 import java.util.*;
 
 public class TestB {
