@@ -3,6 +3,7 @@ package CODES;
 public class ReverseString {
 
 
+    // using recursion
     private String solve(int index, String s) {
         if (index == s.length() - 1) {
             return s.charAt(index) + "";

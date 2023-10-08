@@ -8,11 +8,13 @@ public class TestB {
         int l2 = s2.length();
         int length = l1 + l2 - 1;
 
+        // append 'A' to string of length
         char[] ch = new char[length];
         for (int i = 0; i < length; i++) {
             ch[i] = 'A';
         }
 
+        // store the index of 'T' (True) in list
         List<Integer> indexes = new ArrayList<>();
         for (int i = 0; i < l2; i++) {
             if (s2.charAt(i) == 'T') {
@@ -28,9 +30,12 @@ public class TestB {
                 return "-1";
             }
 
-            int j = 0, k = 0;
-            for (j = index; j < l1; j++) {
-                ch[j] = s1.charAt(k++);
+            // override characters in ch[] starting from index
+            int j = index, k = 0;
+            while(k < l1) {
+                ch[j] = s1.charAt(k);
+                j++;
+                k++;
             }
             lastIndex = j - 1;
         }
