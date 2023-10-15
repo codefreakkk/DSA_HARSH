@@ -22,6 +22,7 @@ public class TestB {
             }
         }
         Collections.sort(indexes);
+        System.out.println(indexes);
 
         int lastIndex = -1;
         for (int i = 0; i < indexes.size(); i++) {
@@ -33,14 +34,23 @@ public class TestB {
             // override characters in ch[] starting from index
             int j = index, k = 0;
             while(k < l1) {
-                ch[j] = s1.charAt(k);
-                j++;
-                k++;
+                ch[j++] = s1.charAt(k++);
             }
-            lastIndex = j - 1;
+            lastIndex = j;
         }
 
         String ans = "";
+        for (char it : ch) {
+            ans += it;
+        }
+        for (int i = 0; i < length; i++) {
+            if (ans.charAt(i) != 'A') {
+                return ans;
+            }
+        }
+
+        ch[length - 3] = 'B';
+        ans = "";
         for (char it : ch) {
             ans += it;
         }
@@ -48,6 +58,7 @@ public class TestB {
     }
 
     public static void main(String[] args) {
-
+        String s1 = "ZXC", s2 = "TFF";
+        System.out.println(generateString(s1, s2));
     }
 }
