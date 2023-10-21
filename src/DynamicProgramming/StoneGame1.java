@@ -32,7 +32,5 @@ public class StoneGame1 {
         return ans >= 0 ? true : false;
     }
 
-    public static void main(String[] args) {
-
-    }
+    public static void main(String[] args) {}
 }
