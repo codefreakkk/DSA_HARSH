@@ -48,8 +48,6 @@ public class MatrixChainMultiplication {
         return dp[1][n - 1];
     }
 
-    public static void main(String[] args) {
-
-    }
+    public static void main(String[] args) {}
 }
 
