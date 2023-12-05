@@ -3,6 +3,7 @@ package Graph;
 import java.util.*;
 
 public class DijkstraAlgorithm {
+
     class Pair {
         int node, distance;
         public Pair(int distance, int node) {
