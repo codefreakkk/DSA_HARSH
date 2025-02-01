@@ -49,4 +49,9 @@ public class NStacksInAnArray {
         freeSpot = index;
         return arr[index];
     }
+
+    public static void main(String[] args) {
+        Deque<Integer> q = new LinkedList<>();
+        q.offer(10);
+    }
 }
