@@ -1,6 +1,7 @@
 package LinkedList;
 
-public class MergeTwoSortedList {
+public class
+MergeTwoSortedList {
 
     // using an extra dummy node
     public SinglyLinkedListCreation mergeTwoList(SinglyLinkedListCreation first, SinglyLinkedListCreation second) {
