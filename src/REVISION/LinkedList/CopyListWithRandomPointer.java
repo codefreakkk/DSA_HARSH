@@ -58,4 +58,8 @@ public class CopyListWithRandomPointer {
         }
         return dummy.next;
     }
+
+    public static void main(String[] args) {
+
+    }
 }
