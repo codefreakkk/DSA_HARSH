@@ -60,26 +60,20 @@ public class CP {
     }
 
     public static void solve(FastReader in) {
+        int n = in.nextInt(), t = in.nextInt();
+        String string = in.nextLine();
 
-        // input
-        int n = in.nextInt();
-        long[] nums = new long[n];
-        for (int i = 0; i < n; i++) {
-            nums[i] = in.nextLong();
-        }
-
-        int smallestIndex = n - 1;
-        for (int i = n - 1; i > 0; i--) {
-            if (nums[i - 1] <= nums[i]) {
-                smallestIndex = i - 1;
+        StringBuilder ans = new StringBuilder(string);
+        for (int i = 0; i < t; i++) {
+            for (int j = 0; j < n; j++) {
+                if (j + 1 < n && ans.charAt(j) == 'B' && ans.charAt(j + 1) == 'G') {
+                    ans.setCharAt(j, 'G');
+                    ans.setCharAt(j + 1, 'B');
+                    j++;
+                }
             }
-            else break;
         }
-        long ans = 0;
-        for (int i = 0; i < smallestIndex; i++) {
-            ans = Math.max(ans, nums[i]);
-        }
-        System.out.println(ans);
+        System.out.println(ans.toString());
     }
 
 
@@ -89,10 +83,10 @@ public class CP {
             FastWriter out = new FastWriter();
 
             // code here
-            int t=in.nextInt();
-            while(t-- > 0) {
+//            int t=in.nextInt();
+//            while(t-- > 0) {
                 solve(in);
-            }
+//            }
 
             out.close();
         } catch (Exception e) {
